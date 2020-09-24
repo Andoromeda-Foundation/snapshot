@@ -1,95 +1,67 @@
 <template>
-  <div>
-    <Container :slim="true">
-      <router-link
-        v-for="space in spaces"
-        :key="space.address"
-        :to="{ name: 'proposals', params: { key: space.key } }"
-      >
-        <Block class="text-center extra-icon-container">
-          <Token
-            :space="space.key"
-            symbolIndex="space"
-            size="88"
-            class="mb-3"
-          />
-          <StatefulIcon
-            :on="space.favorite"
-            onName="star"
-            offName="star1"
-            @click="toggleFavorite(space.key)"
-          />
-          <div>
-            <h2>
-              {{ space.name }}
-              <span class="text-gray">{{ space.symbol }}</span>
-            </h2>
-          </div>
-        </Block>
-      </router-link>
-      <a href="https://discord.snapshot.page" target="_blank">
-        <Block class="text-center">
-          <div
-            v-text="'+'"
-            style="width: 88px; height: 88px; color: white; font-size: 76px; padding-top: 2px;"
-            class="bg-gray-3 circle mx-auto mb-3"
-          />
-          <h2 v-text="'Create space'" />
-        </Block>
-      </a>
-    </Container>
+  <div class="home">
+    <Header></Header>
+
+    <section class="banner">
+      <img
+        src="@/assets/image/home-banner.png"
+        alt="banner"
+        class="banner-img"
+      />
+    </section>
+
+    <section class="container">
+      <section class="tab-head">
+        <p class="th-title">以太坊网络</p>
+        <section class="th-line">
+          <section class="thl-active"></section>
+        </section>
+      </section>
+
+      <section class="toggle">
+        <a href="javascript:;">交易</a>
+        <a href="javascript:;">交易</a>
+        <a href="javascript:;">交易</a>
+        <a href="javascript:;">交易</a>
+        <a href="javascript:;">交易</a>
+        <a href="javascript:;">交易</a>
+      </section>
+
+      <section class="toggle-container">
+        <section class="tc-item" v-for="item in 6" :key="item">
+          <section>
+            <h4 class="ti-title">DACC 2.0</h4>
+            <p class="ti-des">波场上的DAO+SNX+KNC</p>
+            <section class="ti-btn">
+              <a href="javascript:;">现货交易</a>
+              <a href="javascript:;">理财</a>
+            </section>
+          </section>
+          <img src="" alt="" />
+        </section>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <img src="" alt="">
+      <section class="f-nav">
+        <a class="fn-item" href="#" v-for="item in 8" :key="item">
+          <img src="" alt="">
+        </a>
+      </section>
+    </footer>
   </div>
 </template>
 
-<script>
-import { mapActions } from 'vuex';
-import orderBy from 'lodash/orderBy';
-import homepage from '@bonustrack/snapshot-spaces/spaces/homepage.json';
-import domains from '@bonustrack/snapshot-spaces/spaces/domains.json';
-
-export default {
-  data() {
-    return {
-      domains
-    };
-  },
-  computed: {
-    spaces() {
-      const spaces =
-        this.web3.network.chainId === 1
-          ? homepage
-          : Object.keys(this.web3.spaces);
-      const list = spaces.map(key => ({
-        ...this.web3.spaces[key],
-        favorite: !!this.favoriteSpaces.favorites[key]
-      }));
-      return orderBy(list, ['favorite'], ['desc']);
-    }
-  },
-  methods: {
-    ...mapActions([
-      'loadFavoriteSpaces',
-      'addFavoriteSpace',
-      'removeFavoriteSpace'
-    ]),
-    toggleFavorite(spaceId) {
-      if (this.favoriteSpaces.favorites[spaceId]) {
-        this.removeFavoriteSpace(spaceId);
-      } else {
-        this.addFavoriteSpace(spaceId);
-      }
-    }
-  },
-  created() {
-    const domainName = window.location.hostname;
-    if (domains[domainName])
-      return this.$router.push({
-        name: 'proposals',
-        params: {
-          key: domains[domainName]
-        }
-      });
-    this.loadFavoriteSpaces();
+<style lang="scss" scoped>
+.banner {
+  height: 350px;
+  .banner-img {
+    max-width: 1920px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    object-fit: cover;
   }
-};
-</script>
+}
+</style>
