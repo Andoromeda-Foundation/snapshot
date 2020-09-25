@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="h-logo">
-      <img src="@/assets/image/logo.svg" alt="logo" class="hl-logo" />
+      <router-link :to="{ name: 'home' }">
+        <img src="@/assets/image/logo.svg" alt="logo" class="hl-logo" />
+      </router-link>
       <h2 class="hl-title">项目列表</h2>
     </div>
     <div class="h-btn">

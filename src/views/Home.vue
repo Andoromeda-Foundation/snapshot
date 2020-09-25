@@ -32,7 +32,7 @@
       <div v-for="(item, idx) in toggleItem" :key="idx">
         <section class="toggle-container" v-if="toggleItemActive === idx">
           <router-link
-            :to="{ name: 'Home' }"
+            :to="{ name: 'proposals', params: { key: 'yam' } }"
             class="tc-item"
             v-for="(itemChild, idxChild) in item.item"
             :key="idxChild"
@@ -387,6 +387,14 @@ export default {
     align-items: center;
     justify-content: center;
     outline: none;
+    border-left: 1px solid #DBDBDB;
+    &:nth-child(1) {
+      border-left: none;
+      border-radius: 4px 0px 0px 4px;
+    }
+    &:nth-last-child(1) {
+      border-radius: 0 4px 4px 0;
+    }
     &:hover {
       color: #000 !important;
     }

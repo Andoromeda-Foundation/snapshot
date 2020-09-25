@@ -2,7 +2,10 @@
   <div :class="space ? space.key : ''" id="app" class="overflow-hidden">
     <UiLoading v-if="ui.loading || !ui.init" class="overlay big" />
     <div v-else>
-      <router-view :key="$route.path" />
+      <!-- <Topnav /> -->
+      <div class="pb-6 overflow-hidden">
+        <router-view :key="$route.path" class="flex-auto" />
+      </div>
     </div>
     <Notifications />
   </div>

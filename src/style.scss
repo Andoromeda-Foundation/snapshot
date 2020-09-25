@@ -14,33 +14,49 @@
 }
 
 @font-face {
-  font-family: 'Calibre-Medium';
-  src: url('./assets/fonts/Calibre-Medium.eot');
-  src: url('./assets/fonts/Calibre-Medium.eot?#iefix')
-      format('embedded-opentype'),
-    url('./assets/fonts/Calibre-Medium.woff') format('woff'),
-    url('./assets/fonts/Calibre-Medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Inter var';
+  src: url(./assets/fonts/Inter-Var.ttf);
 }
 
-@font-face {
-  font-family: 'Calibre-Semibold';
-  src: url('./assets/fonts/Calibre-Semibold.eot');
-  src: url('./assets/fonts/Calibre-Semibold.eot?#iefix')
-      format('embedded-opentype'),
-    url('./assets/fonts/Calibre-Semibold.woff') format('woff'),
-    url('./assets/fonts/Calibre-Semibold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+html {
+  color: rgb(255, 255, 255);
+  background-color: rgb(44, 47, 54);
+  font-size: 16px;
 }
+
+body {
+  min-height: 100vh;
+  font-family: "Inter var", sans-serif;
+}
+
+// @font-face {
+//   font-family: 'Calibre-Medium';
+//   src: url('./assets/fonts/Calibre-Medium.eot');
+//   src: url('./assets/fonts/Calibre-Medium.eot?#iefix')
+//       format('embedded-opentype'),
+//     url('./assets/fonts/Calibre-Medium.woff') format('woff'),
+//     url('./assets/fonts/Calibre-Medium.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'Calibre-Semibold';
+//   src: url('./assets/fonts/Calibre-Semibold.eot');
+//   src: url('./assets/fonts/Calibre-Semibold.eot?#iefix')
+//       format('embedded-opentype'),
+//     url('./assets/fonts/Calibre-Semibold.woff') format('woff'),
+//     url('./assets/fonts/Calibre-Semibold.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 html,
 body,
 #app {
-  background: var(--bg-color);
+  // background: var(--bg-color);
   color: var(--text-color);
-  font-family: $font-weight-normal;
+  // font-family: $font-weight-normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

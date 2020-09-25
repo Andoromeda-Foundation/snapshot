@@ -36,6 +36,7 @@
     "json-to-graphql-query": "^2.0.0",
     "jsonexport": "^3.0.1",
     "lodash": "^4.17.15",
+    "normalize.css": "^8.0.1",
     "numeral": "^2.0.4",
     "pretty-ms": "^7.0.0",
     "primer-support": "^5.0.0",
