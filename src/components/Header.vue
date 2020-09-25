@@ -7,13 +7,65 @@
       <h2 class="hl-title">项目列表</h2>
     </div>
     <div class="h-btn">
-      <button class="hb-connect">链接钱包</button>
+      <UiButton @click="modalOpen = true" :loading="loading">
+        Connect<span class="hide-sm" v-text="' wallet'" />
+      </UiButton>
+      <button class="hb-connect" @click="modalOpen = true" :loading="loading">链接钱包</button>
       <!-- <div class="hb-language">
         0
       </div> -->
     </div>
+    <ModalAccount
+      :open="modalOpen"
+      @close="modalOpen = false"
+      @login="handleLogin"
+    />
+    <ModalAbout :open="modalAboutOpen" @close="modalAboutOpen = false" />
   </header>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+
+export default {
+  data() {
+    return {
+      loading: false,
+      modalOpen: false,
+      modalAboutOpen: false
+    };
+  },
+  computed: {
+    wrongNetwork() {
+      const chainId = process.env.VUE_APP_CHAIN_ID || 1;
+      return parseInt(chainId) !== this.web3.network.chainId;
+    },
+    showLogin() {
+      return (
+        (!this.$auth.isAuthenticated && !this.web3.injectedLoaded) ||
+        (!this.$auth.isAuthenticated && !this.wrongNetwork)
+      );
+    },
+    space() {
+      try {
+        return this.web3.spaces[this.$route.params.key];
+      } catch (e) {
+        return {};
+      }
+    }
+  },
+  methods: {
+    ...mapActions(['login']),
+    async handleLogin(connector) {
+      this.modalOpen = false;
+      this.loading = true;
+      await this.login(connector);
+      this.loading = false;
+    }
+  }
+};
+</script>
+
 
 <style lang="scss" scoped>
 .header {
