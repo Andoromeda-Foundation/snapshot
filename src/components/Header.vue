@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="h-logo">
-      <img src="" alt="" class="hl-logo" />
+      <img src="@/assets/image/logo.svg" alt="logo" class="hl-logo" />
       <h2 class="hl-title">项目列表</h2>
     </div>
     <div class="h-btn">
@@ -28,13 +28,17 @@
   display: flex;
   align-items: center;
 }
+.hl-logo {
+  height: 40px;
+  color: #000;
+}
 .hl-title {
   font-size: 20px;
   font-weight: 500;
   color: #333333;
   line-height: 28px;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 60px;
 }
 
 .h-btn {

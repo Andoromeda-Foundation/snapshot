@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '@/views/Home.vue';
+import HomeBackup from '@/views/HomeBackup.vue';
 import Proposals from '@/views/Proposals.vue';
 import Proposal from '@/views/Proposal.vue';
 import Create from '@/views/Create.vue';
@@ -13,6 +14,7 @@ const routes: Array<RouteConfig> = [
   { path: '/:key', name: 'proposals', component: Proposals },
   { path: '/:key/:tab', name: 'proposals-tab', component: Proposals },
   { path: '/', name: 'home', component: Home },
+  { path: '/:key/home', name: 'homeB', component: HomeBackup },
   { path: '/*', name: 'error-404', beforeEnter: (to, from, next) => next('/') }
 ];
 

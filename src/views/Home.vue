@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <Header></Header>
-
     <section class="banner">
       <img
         src="@/assets/image/home-banner.png"
@@ -19,47 +18,319 @@
       </section>
 
       <section class="toggle">
-        <a href="javascript:;" class="t-active">交易</a>
-        <a href="javascript:;">交易</a>
-        <a href="javascript:;">交易</a>
-        <a href="javascript:;">交易</a>
-        <a href="javascript:;">交易</a>
-        <a href="javascript:;">交易</a>
+        <a
+          href="javascript:;"
+          @click="toggleItemActive = idx"
+          v-for="(item, idx) in toggleItem"
+          :key="idx"
+          :class="toggleItemActive === idx && 't-active'"
+        >
+          {{ item.label }}
+        </a>
       </section>
 
-      <section class="toggle-container">
-        <section class="tc-item" v-for="item in 6" :key="item">
-          <section>
-            <h4 class="ti-title">DACC 2.0</h4>
-            <p class="ti-des">
-              波场上的DAO+SNXSNXSNXSNXSXSNXSNXSXSNXSNXSXSNXSNXSNXSNX+KNC
-            </p>
-            <section class="ti-btn">
-              <a href="javascript:;">现货交易</a>
-              <a href="javascript:;">理财</a>
+      <div v-for="(item, idx) in toggleItem" :key="idx">
+        <section class="toggle-container" v-if="toggleItemActive === idx">
+          <router-link
+            :to="{ name: 'Home' }"
+            class="tc-item"
+            v-for="(itemChild, idxChild) in item.item"
+            :key="idxChild"
+          >
+            <section>
+              <h4 class="ti-title">{{ itemChild.title }}</h4>
+              <p class="ti-des">
+                {{ itemChild.description }}
+              </p>
+              <section class="ti-btn">
+                <div>现货交易</div>
+                <div>理财</div>
+              </section>
             </section>
-          </section>
-          <section class="ti-logo">
-            <img
-              src="https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png"
-              alt="logo"
-            />
-          </section>
+            <section class="ti-logo">
+              <img :src="itemChild.logo" alt="logo" />
+            </section>
+          </router-link>
         </section>
-      </section>
+      </div>
     </section>
-
     <Footer></Footer>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      toggleItemActive: 0,
+      toggleItem: [
+        {
+          label: '交易',
+          labelItem: [],
+          item: [
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'JFI',
+              description: '流动性聚合协议，波场上的YF',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            }
+          ]
+        },
+        {
+          label: '理财',
+          labelItem: [],
+          item: [
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            }
+          ]
+        },
+        {
+          label: '贷款',
+          labelItem: [],
+          item: [
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            }
+          ]
+        },
+        {
+          label: '保险',
+          labelItem: [],
+          item: [
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            }
+          ]
+        },
+        {
+          label: '资产',
+          labelItem: [],
+          item: [
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            }
+          ]
+        },
+        {
+          label: '其他',
+          labelItem: [],
+          item: [
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            },
+            {
+              title: 'DACC 2.0',
+              description: '波场上的DAO+SNX+KNC',
+              logo:
+                'https://static.debank.com/project-logo/yam.finance_logo_400x400-1597213129331.png'
+            }
+          ]
+        }
+      ]
+    };
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .home {
   background-color: #eceff6;
 }
+
 .banner {
   height: 350px;
   text-align: center;
+
   .banner-img {
     max-width: 1920px;
     width: 100%;
@@ -78,6 +349,7 @@
 
 .tab-head {
   margin-top: 24px;
+
   .th-title {
     font-size: 16px;
     font-weight: 500;
@@ -87,10 +359,12 @@
     margin: 8px 0;
   }
 }
+
 .th-line {
   width: 100%;
   height: 4px;
   background: #dde1eb;
+
   .thl-active {
     width: 120px;
     height: 4px;
@@ -101,6 +375,7 @@
 .toggle {
   margin: 24px 0;
   display: flex;
+
   a {
     width: 16.6666%;
     height: 40px;
@@ -111,10 +386,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: none;
+    &:hover {
+      color: #000 !important;
+    }
 
     &.t-active {
       background-color: #2eafb4;
       color: #fff;
+      &:hover {
+        color: #fff !important;
+      }
     }
   }
 }
@@ -126,6 +408,7 @@
   grid-row-gap: 24px;
   margin-bottom: 60px;
 }
+
 .tc-item {
   background: #ffffff;
   border-radius: 4px;
@@ -144,6 +427,7 @@
   padding: 0;
   margin: 0;
 }
+
 .ti-des {
   font-size: 14px;
   font-weight: 400;
@@ -153,10 +437,12 @@
   margin: 0;
   word-break: break-all;
 }
+
 .ti-btn {
   margin-top: 38px;
   display: flex;
-  a {
+
+  div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,11 +455,13 @@
     font-weight: 500;
     color: #2eafb4;
     line-height: 17px;
+
     &:nth-child(1) {
       margin-right: 8px;
     }
   }
 }
+
 .ti-logo {
   width: 40px;
   height: 40px;
@@ -181,6 +469,7 @@
   border-radius: 100%;
   overflow: hidden;
   margin-left: 20px;
+
   img {
     width: 100%;
     height: 100%;
