@@ -16,10 +16,11 @@
       <section class="c-head">
         <section class="ch-item">
           <h3 class="i-title">项目简介</h3>
-          <p class="i-description">
+          <p class="i-description" :class="decriptionStatus && 'open'">
+            With the advent of popular decentralized exchanges, including UniSwap, the crypto industry saw the rise of permission-less trading platforms that could compete with centralized exchanges. In the year 2020, we’re living through a renascence of decentralization where entire ecosystems are bootstrapped to promote lending and alternative financial services built with blockchain technology.Early on, UniS…
             With the advent of popular decentralized exchanges, including UniSwap, the crypto industry saw the rise of permission-less trading platforms that could compete with centralized exchanges. In the year 2020, we’re living through a renascence of decentralization where entire ecosystems are bootstrapped to promote lending and alternative financial services built with blockchain technology.Early on, UniS…
           </p>
-          <a href="" class="i-more">展开更多</a>
+          <span class="i-more" @click="decriptionStatus = !decriptionStatus">{{ decriptionStatus ? '收起更多' : '展开更多' }}</span>
         </section>
         <section class="ch-item item-link">
           <h3 class="i-title">相关链接</h3>
@@ -54,7 +55,16 @@
           </p>
           <p class="i-item">
             <span class="ii-name">挖矿抵押币种</span>
-            <section class="ii-content">
+            <section class="ii-content iic-address" :class="infoStatus && 'open'">
+              $AAPL-ETH挖矿地址<br>
+              <a class="ii-link" href="https://berkshire.finance/#/actions/$AAPL-ETH/1">https://berkshire.finance/#/actions/$AAPL-ETH/1</a>
+              <br>
+              $AAPL-ETH挖矿地址<br>
+              <a class="ii-link" href="https://berkshire.finance/#/actions/$AAPL-ETH/1">https://berkshire.finance/#/actions/$AAPL-ETH/1</a>
+              <br>
+              $AAPL-ETH挖矿地址<br>
+              <a class="ii-link" href="https://berkshire.finance/#/actions/$AAPL-ETH/1">https://berkshire.finance/#/actions/$AAPL-ETH/1</a>
+              <br>
               $AAPL-ETH挖矿地址<br>
               <a class="ii-link" href="https://berkshire.finance/#/actions/$AAPL-ETH/1">https://berkshire.finance/#/actions/$AAPL-ETH/1</a>
               <br>
@@ -62,7 +72,7 @@
               <a class="ii-link" href="https://berkshire.finance/#/actions/$AAPL-ETH/1">https://berkshire.finance/#/actions/$AAPL-ETH/1</a>
             </section>
           </p>
-          <a class="i-more" href="">展开更多</a>
+          <span class="i-more" @click="infoStatus = !infoStatus">{{ infoStatus ? '收起更多' : '展开更多' }}</span>
 
         </section>
         <section class="ch-item">
@@ -119,6 +129,17 @@
     <Footer></Footer>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      decriptionStatus: false,
+      infoStatus: false,
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .page {
@@ -212,6 +233,7 @@
   line-height: 22px;
   padding: 0;
   margin: 0;
+  cursor: pointer;
 }
 .i-description {
   font-size: 16px;
@@ -220,6 +242,12 @@
   line-height: 22px;
   padding: 0;
   margin: 0;
+  max-height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  &.open {
+    max-height: none;
+  }
 }
 .i-item {
   display: flex;
@@ -258,6 +286,17 @@
     }
   }
 }
+
+.iic-address {
+  max-height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  &.open {
+    max-height: none;
+  }
+}
+
+
 .ii-content,
 .ii-text {
   font-size: 16px;
@@ -376,14 +415,13 @@
   }
   .il-text {
     margin-top: 8px;
-font-size: 16px;
-font-weight: 500;
-color: #B2B2B2;
-line-height: 22px;
-
+    font-size: 16px;
+    font-weight: 500;
+    color: #b2b2b2;
+    line-height: 22px;
   }
   .ilt-label {
-        display: inline-block;
+    display: inline-block;
     padding: 0 7px;
     margin: 0 0 0 4px;
     font-size: 14px;
@@ -392,8 +430,8 @@ line-height: 22px;
     line-height: 23px;
     border-radius: 2em;
     box-shadow: none;
-    color: #B2B2B2;
-    border:1px solid #B2B2B2;
+    color: #b2b2b2;
+    border: 1px solid #b2b2b2;
   }
 }
 </style>
