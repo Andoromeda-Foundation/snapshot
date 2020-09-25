@@ -296,7 +296,6 @@ export default {
   }
 }
 
-
 .ii-content,
 .ii-text {
   font-size: 16px;
