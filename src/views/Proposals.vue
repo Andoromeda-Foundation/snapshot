@@ -423,7 +423,7 @@ export default {
   .ilt-label {
     display: inline-block;
     padding: 0 7px;
-    margin: 0 0 0 4px;
+    margin: 0 4px;
     font-size: 14px;
     font-weight: 500;
     height: 22px;
